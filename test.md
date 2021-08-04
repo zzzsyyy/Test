@@ -20,5 +20,5 @@ $\sqrt{2}$  est irrationnel
 
 #### preuve:
 
-> Supposons $\sqrt{2}$ rationnel, on a $\sqrt{2}=\dfrac{p}{q} , ((p,q)\in\Bbb{Z}^2, q\not ={0})\\$
-> Donc, 
+Supposons $\sqrt{2}$ rationnel, on a $\sqrt{2}=\dfrac{p}{q} , ((p,q)\in\Bbb{Z}^2, q\not ={0})\\$
+Donc, 
