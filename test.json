@@ -1,4 +1,6 @@
 {
+    "code": 200,
+    "status": "S",
     "detail": {
         "title": "$\\sqrt{2} est le nombre irrationnel$",
         "content": "",
@@ -7,9 +9,5 @@
         "exemple": "",
         "source": "",
         "chinese": ""
-    },
-    "status":{
-        "code": 200,
-        "status": "S"
     }
 }
