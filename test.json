@@ -4,7 +4,7 @@
     "detail": {
         "title": "$\\sqrt{2} est le nombre irrationnel$",
         "content": "",
-        "prove": "### method 1  \n Supposons $\\sqrt{2}$ rationnel, on a $\\sqrt{2}=\\dfrac{p}{q} , ((p,q)\\in\\Bbb{Z}^2, q\\not ={0})$",
+        "preuve": "### method 1  \n Supposons $\\sqrt{2}$ rationnel, on a $\\sqrt{2}=\\dfrac{p}{q} , ((p,q)\\in\\Bbb{Z}^2, q\\not ={0})$",
         "remarque": "",
         "exemple": "",
         "source": "",
