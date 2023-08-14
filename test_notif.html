@@ -3,32 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Push Notification Test</title>
+    <title>Push Notification Auto Request</title>
 </head>
 <body>
-    <h1>Push Notification Test</h1>
+    <h1>Welcome to Push Notification Test</h1>
     <script>
-        var swCode = `
-            self.addEventListener('push', function(event) {
-                const options = {
-                    body: event.data.text(),
-                    icon: 'icon.png',
-                    badge: 'badge.png'
-                };
-
-                event.waitUntil(
-                    self.registration.showNotification('新消息', options)
-                );
-            });
-        `;
-
         if ('serviceWorker' in navigator && 'PushManager' in window) {
-            navigator.serviceWorker.register('data:application/javascript;base64,' + btoa(swCode))
+            // 注册 Service Worker
+            navigator.serviceWorker.register('service-worker.js')
             .then(function(registration) {
                 console.log('Service Worker 注册成功:', registration);
+                
+                // 请求推送通知权限
                 return registration.pushManager.subscribe({
                     userVisibleOnly: true,
-                    applicationServerKey: 'your-public-key'
+                    applicationServerKey: 'BDZmeDzq_WoHM6Ko7X1-4Q1d48HQEQZysO3uaFvLcJdJInSo3L4H_DkPnRmrAuz1THrSoYszg7zWjVfEYthI_G0'
                 });
             })
             .then(function(subscription) {
