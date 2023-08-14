@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Push Notification Test</title>
+</head>
+<body>
+    <h1>Push Notification Test</h1>
+    <script>
+        if ('serviceWorker' in navigator && 'PushManager' in window) {
+            navigator.serviceWorker.register('data:application/javascript;base64,' + btoa(`
+                self.addEventListener('push', function(event) {
+                    const options = {
+                        body: event.data.text(),
+                        icon: 'icon.png',
+                        badge: 'badge.png'
+                    };
+
+                    event.waitUntil(
+                        self.registration.showNotification('新消息', options)
+                    );
+                });
+            `))
+            .then(function(registration) {
+                console.log('Service Worker 注册成功:', registration);
+                return registration.pushManager.subscribe({
+                    userVisibleOnly: true,
+                    applicationServerKey: 'your-public-key'
+                });
+            })
+            .then(function(subscription) {
+                console.log('订阅成功:', subscription);
+            })
+            .catch(function(error) {
+                console.log('推送通知不受支持或发生错误:', error);
+            });
+        } else {
+            console.log('推送通知不受支持');
+        }
+    </script>
+</body>
+</html>
+
