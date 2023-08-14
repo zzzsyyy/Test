@@ -8,20 +8,22 @@
 <body>
     <h1>Push Notification Test</h1>
     <script>
-        if ('serviceWorker' in navigator && 'PushManager' in window) {
-            navigator.serviceWorker.register('data:application/javascript;base64,' + btoa(`
-                self.addEventListener('push', function(event) {
-                    const options = {
-                        body: event.data.text(),
-                        icon: 'icon.png',
-                        badge: 'badge.png'
-                    };
+        var swCode = `
+            self.addEventListener('push', function(event) {
+                const options = {
+                    body: event.data.text(),
+                    icon: 'icon.png',
+                    badge: 'badge.png'
+                };
 
-                    event.waitUntil(
-                        self.registration.showNotification('新消息', options)
-                    );
-                });
-            `))
+                event.waitUntil(
+                    self.registration.showNotification('新消息', options)
+                );
+            });
+        `;
+
+        if ('serviceWorker' in navigator && 'PushManager' in window) {
+            navigator.serviceWorker.register('data:application/javascript;base64,' + btoa(swCode))
             .then(function(registration) {
                 console.log('Service Worker 注册成功:', registration);
                 return registration.pushManager.subscribe({
@@ -41,4 +43,3 @@
     </script>
 </body>
 </html>
-
